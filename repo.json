@@ -3,6 +3,6 @@
     "name": "Taabar Cloud Repo",
     "internalName": "taabar_cloud",
     "baseUrl": "https://sflix.to",
-    "scriptUrl": "https://YOUR_GITHUB_LINK_HERE/taabar_scraper.js"
+    "scriptUrl": "https://raw.githubusercontent.com/v99297-blip/taabar-repo/refs/heads/main/taabar_scraper.js"
   }
 ]
