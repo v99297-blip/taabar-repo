@@ -1,0 +1,8 @@
+[
+  {
+    "name": "Taabar Cloud Repo",
+    "internalName": "taabar_cloud",
+    "baseUrl": "https://sflix.to",
+    "scriptUrl": "https://YOUR_GITHUB_LINK_HERE/taabar_scraper.js"
+  }
+]
