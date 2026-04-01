@@ -11,7 +11,7 @@ function getCatalog(html) {
             });
         } else {
              movies.push({
-                name: "❌ ISP Blocked Cineby HTML",
+                name: "❌ ISP Blocked HTML",
                 poster: "https://image.tmdb.org/t/p/w500/hr9rjR3J0xBBKmlJ4n3gvdhe5vC.jpg",
                 url: "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
             });
@@ -31,8 +31,9 @@ function getCatalog(html) {
 
 function extractStream(html) {
     try {
-        var streamRegex = /(https:\/\/[^"']*\.(?:m3u8|mp4)[^"']*)/i;
-        var match = streamRegex.exec(html);
+        // Safe string parsing instead of complex Regex literals to prevent QuickJS crash
+        var safeRegex = new RegExp("(https://[^\\s\"']+\\.(?:m3u8|mp4)[^\\s\"']*)", "i");
+        var match = safeRegex.exec(html);
         
         if (match && match[1]) {
             return JSON.stringify({ url: match[1] });
