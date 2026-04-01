@@ -3,34 +3,32 @@ function getCatalog(html) {
     var movies = [];
 
     try {
-        // Asli Hacker Regex: Ye HTML mein se 'src' (poster) aur 'alt' (title) nikalega!
-        var regex = /<img[^>]*src=["']([^"']+)["'][^>]*class=["'][^"']*movieCard[^"']*["'][^>]*alt=["']([^"']+)["']/gi;
+        // Native Dart code se churaya gaya Netmirror ka Regex Pattern!
+        var regex = /href=["']([^"']+)["'][^>]*>[\s\S]*?<img[^>]*(?:data-src|src)=["']([^"']+)["'][^>]*alt=["']([^"']+)["']/gi;
         var match;
         var count = 0;
 
-        // Jab tak movies milti rahengi (Max 20 movies)
         while ((match = regex.exec(html)) !== null && count < 20) {
-            var posterUrl = match[1];
-            var title = match[2];
+            var streamUrl = match[1];
+            var posterUrl = match[2];
+            var title = match[3];
 
-            // Agar poster link incomplete hai toh fix karo
-            if (posterUrl.startsWith('/')) {
-                posterUrl = "https://www.cineby.sc" + posterUrl;
-            }
+            // Agar URL aadhi hai toh uske aage netmirror.app laga do
+            if (posterUrl.startsWith('/')) posterUrl = "https://netmirror.app" + posterUrl;
+            if (streamUrl.startsWith('/')) streamUrl = "https://netmirror.app" + streamUrl;
 
             movies.push({
                 name: title,
                 poster: posterUrl,
-                // Abhi video link dummy rakha hai test ke liye
-                url: "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8" 
+                url: "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8" // Abhi bhi test video rakhi hai testing ke liye
             });
             count++;
         }
 
         if (movies.length > 0) {
-            catalog.push({ name: "🔥 Cineby Trending", items: movies });
+            catalog.push({ name: "🔥 Netmirror Exclusives", items: movies });
         } else {
-            catalog.push({ name: "❌ No Movies", items: [{ name: "Regex fail ya ISP Block", poster: "", url: "" }] });
+            catalog.push({ name: "❌ No Movies", items: [{ name: "HTML nahi mila ya Regex fail", poster: "https://image.tmdb.org/t/p/w500/hr9rjR3J0xBBKmlJ4n3gvdhe5vC.jpg", url: "" }] });
         }
         
     } catch (e) {
