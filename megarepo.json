@@ -1,0 +1,20 @@
+{
+    "name": "Taabar Mega Repo",
+    "description": "The ultimate collection of Vision IPTV plugins.",
+    "plugins": [
+        {
+            "name": "Cineby (Multi-Lang)",
+            "id": "com.taabar.cineby",
+            "version": "1.0.0",
+            "icon": "https://www.cineby.sc/favicon.ico",
+            "script_url": "https://raw.githubusercontent.com/YOUR_GITHUB_PATH/cineby_plugin.js"
+        },
+        {
+            "name": "Netmirror (Hindi/Dub)",
+            "id": "com.taabar.netmirror",
+            "version": "1.0.0",
+            "icon": "https://netmirror.app/favicon.ico",
+            "script_url": "https://raw.githubusercontent.com/YOUR_GITHUB_PATH/netmirror_plugin.js"
+        }
+    ]
+}
